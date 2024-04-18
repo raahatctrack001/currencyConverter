@@ -4,7 +4,7 @@ import { currencyData } from '../currency.js'
 
 const Header = ({ theme, setTheme }) => {
     const [notifications, setNotifications] = useState(0);
-    console.log(currencyData.length)
+
 
     // Handle theme toggle
     const handleThemeToggle = () => {
