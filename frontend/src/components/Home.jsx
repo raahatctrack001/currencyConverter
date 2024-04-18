@@ -17,7 +17,9 @@ const Home = () => {
     const YOUR_APP_ID = import.meta.env.VITE_OPEN_EXCHANGE_API ///VITE in caps in must
     // import.meta.env.OPEN_EXCHANGE_API;
     // console.log('appid', YOUR_APP_ID)
-    const apiURL = `https://openexchangerates.org/api/latest.json?app_id=${YOUR_APP_ID}`
+    // const apiURL = `https://openexchangerates.org/api/latest.json?app_id=${YOUR_APP_ID}`
+    const apiURL = `https://api.exchangerate-api.com/v4/latest/${sourceCurrency}`;
+
 
     currencyData.sort((a, b) => {
         const countryA = a.country.toUpperCase(); // Convert to uppercase for case-insensitive comparison
