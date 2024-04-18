@@ -55,7 +55,7 @@ const Home = () => {
             setError('Failed to fetch conversion rate');
         }
     };
-    console.log('converion rate: ', conversionRate)
+    // console.log('converion rate: ', conversionRate)
     // console.log('source currency',sourceCurrency)
     // console.log('target currency', targetCurrency)
 

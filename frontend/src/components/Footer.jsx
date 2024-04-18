@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -17,6 +17,8 @@ const Footer = () => {
                         href="https://twitter.com/your_profile"
                         className="text-xl mx-2"
                         aria-label="Twitter"
+                        target="_blank" 
+                        rel="noopener noreferrer"
                     >
                         <FaTwitter />
                     </a>
@@ -24,6 +26,8 @@ const Footer = () => {
                         href="https://facebook.com/your_profile"
                         className="text-xl mx-2"
                         aria-label="Facebook"
+                        target="_blank" 
+                        rel="noopener noreferrer"
                     >
                         <FaFacebook />
                     </a>
@@ -31,11 +35,23 @@ const Footer = () => {
                         href="https://linkedin.com/your_profile"
                         className="text-xl mx-2"
                         aria-label="LinkedIn"
+                        target="_blank" 
+                        rel="noopener noreferrer"
                     >
                         <FaLinkedin />
                     </a>
+                    <a
+                        href="https://instagram.com/your_profile"
+                        className="text-xl mx-2 non-operat"
+                        aria-label="Instagram"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        <FaInstagram />
+                    </a>
                 </div>
             </div>
+            
             <div className="text-center mt-4">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
