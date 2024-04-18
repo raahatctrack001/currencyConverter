@@ -41,7 +41,7 @@ const TermsAndConditions = () => {
                 <p className="mt-2">We may update these terms from time to time. We will notify you of any changes by posting the updated terms on our app. Your continued use of the app constitutes acceptance of the updated terms.</p>
             </section>
 
-            {/* Contact Us */}
+            {/* Contact Us section */}
             <section className="mb-6">
                 <h2 className="text-xl font-semibold">7. Contact Us</h2>
                 <p className="mt-2">If you have any questions or concerns about these terms and conditions, please contact us at [Your Contact Information].</p>
