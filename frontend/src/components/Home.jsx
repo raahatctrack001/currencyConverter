@@ -3,6 +3,7 @@ import axios from 'axios';
 import { currencyData } from '../currency';
 import dotenv from 'dotenv'
 import BarChart from './BarChart';
+import LineChart from './LIneChart';
 
 
 
