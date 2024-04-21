@@ -18,8 +18,8 @@ const Home = () => {
     // import.meta.env.OPEN_EXCHANGE_API;
     // console.log('appid', YOUR_APP_ID)
     // const apiURL = `https://openexchangerates.org/api/latest.json?app_id=${YOUR_APP_ID}`
-    const apiURL = `https://api.exchangerate-api.com/v4/latest/${sourceCurrency}`;
-
+    // const apiURL = `https://api.exchangerate-api.com/v4/nplatest/${sourceCurrency}`;
+    const backendAPI = `/api/exchange-rates?source=${sourceCurrency}`
 
     currencyData.sort((a, b) => {
         const countryA = a.country.toUpperCase(); // Convert to uppercase for case-insensitive comparison
@@ -41,8 +41,10 @@ const Home = () => {
 
     const fetchConversionRate = async () => {
         try {
-            const response = await fetch(apiURL, {method: 'GET'});
+            const response = await fetch(backendAPI, {method: 'GET'});
             const data = response.json();
+            console.log("response: ", response);
+            console.log("data: ", data);
             data
             .then((data)=>{
                 // console.log(data.rates)
@@ -68,7 +70,7 @@ const Home = () => {
             setConvertedAmount(convertedAmount);
         }
     };
-    // console.log(sourceCurrency)
+    console.log(sourceCurrency)
     // console.log(targetCurrency)
     const handleAmountChange = (e)=>{
         setAmount(e.target.value)
