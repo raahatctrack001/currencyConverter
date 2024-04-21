@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { currencyData } from '../currency';
 import dotenv from 'dotenv'
+import BarChart from './BarChart';
 
 
 
@@ -12,6 +13,7 @@ const Home = () => {
     const [convertedAmount, setConvertedAmount] = useState(null);
     const [conversionRate, setConversionRate] = useState(null);
     const [error, setError] = useState(null);
+    const [exchangeRates, setExchangeRates] = useState({});
 
     // const apiKey = 'YOUR_API_KEY'; // Add your API key here
     const YOUR_APP_ID = import.meta.env.VITE_OPEN_EXCHANGE_API ///VITE in caps in must
@@ -42,26 +44,18 @@ const Home = () => {
     const fetchConversionRate = async () => {
         try {
             const response = await fetch(backendAPI, {method: 'GET'});
-            const data = response.json();
-            console.log("response: ", response);
-            console.log("data: ", data);
+            const data = response.json();           
             data
-            .then((data)=>{
-                // console.log(data.rates)
-                const rate =  data.rates[targetCurrency]
-                // console.log(targetCurrency);
+            .then((data)=>{                
+                const rate =  data.rates[targetCurrency]                
                 setConversionRate(rate)
-                // console.log('targetrate', data.rates[targetCurrency])
-            })
+                setExchangeRates(data.rates)                
+            })         
            
-            // setConversionRate(rate);
         } catch (err) {
             setError('Failed to fetch conversion rate');
         }
     };
-    // console.log('converion rate: ', conversionRate)
-    // console.log('source currency',sourceCurrency)
-    // console.log('target currency', targetCurrency)
 
     const handleConvert = () => {
         fetchConversionRate();
@@ -70,7 +64,7 @@ const Home = () => {
             setConvertedAmount(convertedAmount);
         }
     };
-    console.log(sourceCurrency)
+    // console.log(sourceCurrency)
     // console.log(targetCurrency)
     const handleAmountChange = (e)=>{
         setAmount(e.target.value)
@@ -79,7 +73,13 @@ const Home = () => {
             setConvertedAmount(convertedAmount);
         }
     }
-    // console.log(amount)
+    console.log(exchangeRates)
+    const exchangeRateArray = exchangeRates && Object.keys(exchangeRates).map(currency => ({
+        country: currency,
+        rate: exchangeRates[currency]
+    }));
+    // exchangeRates && console.log( Object.keys(exchangeRates))
+    console.log(exchangeRateArray)
     return (
         <div className="container mx-auto my-6 p-6 min-h-screen">
             {/* Currency Selection */}
@@ -148,6 +148,8 @@ const Home = () => {
             {error && (
                 <div className="text-red-500 text-center mt-4">{error}</div>
             )}
+
+            <BarChart exchangeRates={exchangeRateArray}  />
         </div>
     );
 };

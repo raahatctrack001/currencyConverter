@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Chart from 'chart.js/auto';
+import { currencyData } from '../currency';
 
 const BarChart = ({ exchangeRates }) => {
     const [chart, setChart] = useState(null);
 
     useEffect(() => {
         if (exchangeRates && exchangeRates.length > 0) {
+
             const labels = exchangeRates.map(rate => rate.country);
             const data = exchangeRates.map(rate => rate.rate);
 
